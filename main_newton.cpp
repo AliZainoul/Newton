@@ -3,7 +3,6 @@
 using namespace std;
 
 #include "error.hpp"
-//#include "Vector.hpp"
 #include "newton.hpp"
 
 typedef double (*pfn) (double);
@@ -28,52 +27,61 @@ double sprime(double x){return (-2*x);};
 
 double h(double x){return x;};
 double hprime(double x){return 1;};
+
+pfn j=hprime;
 double jprime(double x){return 0;};
-
-
 
 
 // cout << "the name of this function is: " << __func__ << endl;
 
 int main ()
 {
-cout << "*** *** *** *** ***" << "\n";
-cout << "Test of Function f :"<< "\n";
-cout << newton(1.5, f, fprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
+int d = 1000;
+double delta,epsilon;
+delta = 0.000001;
+epsilon = 0.000001;
 
 cout << "*** *** *** *** ***" << "\n";
-cout << "Test of Function g :"<< "\n";
-cout << newton(2, g, gprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
 
-cout << "*** *** *** *** ***" << "\n";
-cout << "Test of Function p :"<< "\n";
-cout << newton(9999, p, pprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
-
-cout << "*** *** *** *** ***" << "\n";
-cout << "Test of Function q :"<< "\n";
-cout << newton(0.1, q, qprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
-
-cout << "*** *** *** *** ***" << "\n";
 cout << "Test of Function r :"<< "\n";
-cout << newton(5, r, rprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
+cout << " Value x_newton " <<newton(5, r, rprime, delta, epsilon, d) << "\n";
+cout << " Value r(x_newton) " <<r(newton(5, r, rprime, delta, epsilon, d)) << "\n";
+getchar();
 
-cout << "*** *** *** *** ***" << "\n";
+cout << "Test of Function f :"<< "\n";
+cout << " Value x_newton " << newton(1.5, f, fprime, delta, epsilon, d) << "\n";
+cout << " Value f(x_newton)  " <<f(newton(1.5, f, fprime, delta, epsilon, d)) << "\n";
+getchar();
+
+cout << "Test of Function g :"<< "\n";
+cout << " Value x_newton " <<newton(2, g, gprime, delta, epsilon, d) << "\n";
+cout << " Value g(x_newton)  " <<g(newton(2, g, gprime, delta, epsilon, d)) << "\n";
+getchar();
+
+cout << "Test of Function p :"<< "\n";
+cout << " Value x_newton " <<newton(9999, p, pprime, delta, epsilon, d) << "\n";
+cout << " Value p(x_newton)  " <<p(newton(9999, p, pprime, delta, epsilon, d)) << "\n";
+getchar();
+
+cout << "Test of Function q :"<< "\n";
+cout << " Value x_newton " <<newton(0.1, q, qprime, delta, epsilon, d) << "\n";
+cout << " Value q(x_newton)  " <<q(newton(0.1, q, qprime, delta, epsilon, d)) << "\n";
+getchar();
+
 cout << "Test of Function s :"<< "\n";
-cout << newton(-0.1, s, sprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
+cout << " Value x_newton " <<newton(-0.1, s, sprime, delta, epsilon, d) << "\n";
+cout << " Value s(x_newton)  " <<s(newton(-0.1, s, sprime, delta, epsilon, d)) << "\n";
+getchar();
 
-cout << "*** *** *** *** ***" << "\n";
 cout << "Test of Function h :"<< "\n";
-cout << newton(500, h, hprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
+cout << " Value x_newton " <<newton(500, h, hprime, delta, epsilon, d) << "\n";
+cout << " Value h(x_newton)  " <<h(newton(500, h, hprime, delta, epsilon, d)) << "\n";
+getchar();
 
-cout << "*** *** *** *** ***" << "\n";
 cout << "Test of Function j :"<< "\n";
-cout << newton(500, hprime, jprime, 0.000001, 0.000001, 1000000) << "\n";
-cout << "*** *** *** *** ***" << "\n";
+cout << " Value x_newton " <<newton(500, j, jprime, delta, epsilon, d) << "\n";
+cout << " Value j(x_newton)  " <<j(newton(500, j, jprime, delta, epsilon, d)) << "\n";
+getchar();
+
+return 0;
 }

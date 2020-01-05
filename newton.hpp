@@ -2,7 +2,6 @@
 #define NEWTON_H
 #include <iostream>
 #include <cmath>
-//#include "Vector.hpp"
 #include "error.hpp"
 using namespace std;
 typedef double (*pfn) (double);
